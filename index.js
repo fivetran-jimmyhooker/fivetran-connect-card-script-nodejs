@@ -1,6 +1,5 @@
 require('dotenv').config();
 const axios = require('axios');
-const { v4: uuidv4 } = require('uuid');
 const randomWords = require('random-words');
 
 
