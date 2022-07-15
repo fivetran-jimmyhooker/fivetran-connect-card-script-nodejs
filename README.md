@@ -10,7 +10,7 @@ We're going to setup a really simple script that will generate a connect card UR
 - Setup a destination in Fivetran (ie Snowflake, BigQuery, etc): https://fivetran.com/docs/destinations and get your destination ID from the bottom of the destination page details in your dashboard. 
 
 ## Setup
-- Create a `.env` file in the root of the project and add your key, secret, groupId in the below format:
+Create a `.env` file in the root of the project and add your key, secret, groupId in the below format:
 ```
 API_KEY=
 API_SECRET=
