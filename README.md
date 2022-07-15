@@ -7,7 +7,7 @@ We're going to setup a really simple script that will generate a connect card UR
 ## Prepare
 - You'll need a Fivetran account and your key and secret that you can find in settings. Find out more in our [getting started guide](https://fivetran.com/docs/rest-api/getting-started).
 - Make sure you have node/npm installed: https://nodejs.org/en/
-- Setup a destination in Fivetran (ie Snowflake, BigQuery, etc): https://fivetran.com/docs/destinations
+- Setup a destination in Fivetran (ie Snowflake, BigQuery, etc): https://fivetran.com/docs/destinations and get your destination ID from the bottom of the destination page details in your dashboard. 
 
 ## Setup
 - Create a `.env` file in the root of the project and add your key, secret, groupId in the below format:

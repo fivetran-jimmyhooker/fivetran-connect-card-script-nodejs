@@ -42,10 +42,11 @@ const connectCardGen = async () => {
         );
         connectorId = connectorData.data.data.id;
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
+        process.exit()
     }
 
-    // Create the Connector Card Token and return it
+    // Create the Connect Card Token and return it
     console.log('\x1b[36m%s\x1b[0m','Creating a Connect Card Token...\n');
     try {
         const connectCardTokenData = await axios(
@@ -58,7 +59,8 @@ const connectCardGen = async () => {
 
         connectCardToken = connectCardTokenData.data.token;
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
+        process.exit()
     }
 
      // Construct the URL for a connect card and log it to the CLI
