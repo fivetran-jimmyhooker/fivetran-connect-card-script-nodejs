@@ -1,5 +1,5 @@
 # Fivetran Connect Card Generation Script in Node.JS
-Easily generate connect cards from the comfort of your chair using NodeJS
+Easily generate [Connect Cards](https://fivetran.com/docs/rest-api/connectors/connect-card) from the comfort of home using NodeJS
 
 ## How this works
 We're going to setup a really simple script that will generate a connect card URL for Google Analytics. Want to try others? Check out the config examples here: https://fivetran.com/docs/rest-api/connectors/config
