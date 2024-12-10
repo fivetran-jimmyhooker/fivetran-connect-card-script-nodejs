@@ -14,8 +14,10 @@ const base64Encoded = new Buffer.from(token).toString('base64');
 // Begin Config
 const group = process.env.GROUP_ID;
 const schemaId = randomWords({ exactly: 2, join: '_' });
-const connectorType = 'google_analytics';
+const connectorType = 'google_analytics_4';
 // End Config
+
+let connectCardUrl;
 
 const connectCardGen = async () => {
     let connectorId;
@@ -34,6 +36,9 @@ const connectCardGen = async () => {
                     "group_id": group,
                     "paused": "true",
                     "run_setup_tests": "false",
+                    "connect_card_config": {
+                        "redirect_uri": "https://news.ycombinator.com/",
+                    },
                     "config": {
                         "schema": schemaId
                     }
@@ -41,23 +46,7 @@ const connectCardGen = async () => {
             }
         );
         connectorId = connectorData.data.data.id;
-    } catch (error) {
-        console.log(error.response.data);
-        process.exit()
-    }
-
-    // Create the Connect Card Token and return it
-    console.log('\x1b[36m%s\x1b[0m','Creating a Connect Card Token...\n');
-    try {
-        const connectCardTokenData = await axios(
-            {
-                method: 'post',
-                url: `https://api.fivetran.com/v1/connectors/${connectorId}/connect-card-token`,
-                headers: { 'Authorization': 'Basic '+ base64Encoded }
-            }
-        );
-
-        connectCardToken = connectCardTokenData.data.token;
+        connectCardUrl = connectorData.data.data.connect_card.uri;
     } catch (error) {
         console.log(error.response.data);
         process.exit()
@@ -65,7 +54,7 @@ const connectCardGen = async () => {
 
      // Construct the URL for a connect card and log it to the CLI
     console.log('\x1b[36m%s\x1b[0m','All done! Get your URL below:');
-    console.log(`https://fivetran.com/connect-card/setup?redirect_uri=https://fivetran.com&auth=${connectCardToken}`)
+    console.log(connectCardUrl)
 };
 
 connectCardGen();
